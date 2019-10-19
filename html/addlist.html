@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DB List add</title>
+	<link rel="icon" href="http://cdn.onlinewebfonts.com/svg/img_446647.png">
+	<link rel="stylesheet" type="text/css" href="../css/addlist.css">
+</head>
+<body>
+	<div id="wrapper">
+		<ul id="elements">
+			<h3>Configure new table</h3>
+			<li>
+				<input type="text" name="name" placeholder="Table name">
+			</li>
+			<li>
+				<input type="text" name="name" placeholder="Field name">
+				<input type="text" name="name" placeholder="Value">
+			</li>
+			<li>
+				<input type="text" name="name" placeholder="Field name">
+				<input type="text" name="name" placeholder="Value">
+			</li>
+			<li>
+				<input type="text" name="name" placeholder="Field name">
+				<input type="text" name="name" placeholder="Value">
+			</li>
+			<li>
+				<input type="text" name="name" placeholder="Field name">
+				<input type="text" name="name" placeholder="Value">
+			</li>
+		</ul>
+		<button onclick="addelement()">+</button>
+		<a href="#">Finish</a>
+	</div>
+	<script>
+	function addelement() {
+  		var node = document.createElement('li');
+  		var node.innerHTML = ("<li><input type='text' name='name' placeholder='Field name'><input type='text' name='name' placeholder='Value'></li>");
+  		document.getElementById("elements").appendChild(node);
+	}
+</script>
+</body>
+</html>
