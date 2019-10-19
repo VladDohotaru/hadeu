@@ -10,6 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 //parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 // add a basic route
 app.get('/', function(req, res) {
   res.json({ message: 'Express is up!' });
