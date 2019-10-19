@@ -43,3 +43,22 @@ $(document).ready(function () {
 	
 
 });
+
+$(document).ready(function() {
+    $.ajax({
+        url: 'localhost/users'
+        dataType: "application/json",
+        cache: false,
+        timeout: 1000,
+        success: function(data) {
+        	console.log(data);
+        	$( "div.customers" ).html(function() {
+  			var emphasis = "<tr><th class=>" +  +  .length + " paragraphs!</em>";
+  			return "<p>All new content for " + emphasis + "</p>";
+});
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert('error ' + textStatus + " " + errorThrown);
+        }
+    });
+});
