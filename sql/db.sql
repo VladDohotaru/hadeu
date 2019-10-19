@@ -1,26 +1,26 @@
 CREATE TABLE biblioteca_db.Activity (
 	ActivityId int,
-	ActivityName varchar(255)
+	ActivityType ENUM ('Stiintifice', 'Culturale'),
+	ActivityFormat ENUM ('Conferinta', 'Simpozion', 'Lectie publica', 'Masa rotunda', 'Colocviu'),
+	ActivityDate DATE,
+	ActivityLocation varchar(255),
+	ActivityNrLocuri int,
+	ActivityNrLOcuriLibere int,
+	ActivityDescriere varchar(65000),
+	ActivityAudienta ENUM ('Copii', 'Tineri', 'Adulti', 'Seniori'),
+	ActivityTopic ENUM ('Teatru', 'Muzica', 'Dans'),
+	ActivityLimba ENUM ('Rusa', 'Romana', 'Engleza')
 );
 
-CREATE TABLE biblioteca_db.First (
-	KeyId int,
-	Tip varchar(255),
-	Filiala varchar(255),
-	Activ int,
-	NrParitici int
+CREATE TABLE biblioteca_db.Programe (
+	ProgrameNume varchar(255),
+	ProgrameId int,
+	ProgramePublicatiiId int
 );
 
-CREATE TABLE biblioteca_db.Second (
-	KeyId int,
-	Filiala varchar(255),
-	NrLivrate int,
-	NrServicii16 int,
-	NrTotalFormal int,
-	NrTotalNFormal int,
-	NrTotalIFormal int,
-	NrTotalUseri int,
-	NrTotalCopii int,
-	NrPartIFormal int,
-	NrPartICopii int
+CREATE TABLE biblioteca_db.Publicatii (
+	PublicatiiId int,
+	PublicatiiNume varchar(255),
+	PublicatiiAutor varchar(255),
+	PublicatiiCategorie ENUM ('Stiintific', 'Cultural', 'Educativ')
 );
