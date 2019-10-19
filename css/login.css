@@ -1,0 +1,55 @@
+body {
+	background: url("../img/bg.png");
+}
+
+#login_form {
+	width: 350px;
+	border-radius: 5%;
+	background-color: #fff;
+	-webkit-box-shadow: 3px 7px 36px -8px rgba(0,0,0,0.75);
+	-moz-box-shadow: 3px 7px 36px -8px rgba(0,0,0,0.75);
+	box-shadow: 3px 7px 36px -8px rgba(0,0,0,0.75);
+	margin: 100px auto 0px;
+	padding: 10px;
+}
+
+form {
+	margin: 25px 50px;
+}
+
+form input {
+	margin-bottom: 20px;
+}
+
+form button {
+	margin-bottom: 20px;
+}
+
+form button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.guest .sign {
+	width: 170px;
+}
+
+.fb {
+	background-color: #3b5998;
+	width: 250px;
+}
+
+.guest {
+	background-color: #c3c7c4;
+	width: 120px;
+}
+
+.sign {
+	width: 120px;
+}
