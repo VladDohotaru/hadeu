@@ -76,5 +76,3 @@ module.exports = {
 	getAllUsers,
 	getUser,
 };
-
-module.exports.userOptions = userOptions;

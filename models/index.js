@@ -5,6 +5,13 @@ const {
 	getAllUsers,
 	getUser,
 } = require('./user.js');
+'use strict';
+const {
+  Activity,
+	createActivity,
+	getAllActivities,
+	getActivity,
+} = require('./activity.js');
 
 
 
@@ -13,4 +20,8 @@ module.exports = {
 	createUser,
 	getAllUsers,
 	getUser,
+	Activity,
+	createActivity,
+	getAllActivities,
+	getActivity,
 };

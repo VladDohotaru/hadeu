@@ -11,11 +11,14 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = 'wowwow';
 const bodyParser = require('body-parser');
 const {
-	User,
 	getAllUsers,
 	createUser,
-	getUser,
+  getUser,
+  createActivity,
+	getAllActivities,
+	getActivity
 } = require('./models/index.js');
+
 const passport = require('./config/passport');
 
 const app = express();
@@ -33,6 +36,21 @@ app.get('/', function(req, res) {
 app.get('/users', function(req, res) {
   console.log('AICI')
   getAllUsers().then((response) => {
+    console.log(response)
+    res.json(response)
+  }); 
+});
+
+app.get('/activitati', function(req, res) {
+  console.log('AICI')
+  getAllActivities().then((response) => {
+    console.log(response)
+    res.json(response)
+  }); 
+});
+app.post('/activitati', function(req, res) {
+  console.log('AICI /activitati', req.body)
+  createActivity(req.body).then((response) => {
     console.log(response)
     res.json(response)
   }); 
