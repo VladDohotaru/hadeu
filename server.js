@@ -4,10 +4,8 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const passportJWT = require('passport-jwt');
 const passwordCheck = require('./config/checkPassword.js');
-const encryption = require('./config/passwordEncryption.js');
 
 let ExtractJwt = passportJWT.ExtractJwt;
-let JwtStrategy = passportJWT.Strategy;
 let jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = 'wowwow';
@@ -17,7 +15,7 @@ const {
 	getAllUsers,
 	createUser,
 	getUser,
-} = require('./models/model.js');
+} = require('./models/index.js');
 const passport = require('./config/passport');
 
 const app = express();
@@ -33,7 +31,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/users', function(req, res) {
-  getAllUsers().then(user => res.json(user)); 
+  console.log('AICI')
+  getAllUsers().then((response) => {
+    console.log(response)
+    res.json(response)
+  }); 
 });
 // register route
 app.post('/register', function(req, res, next) {
@@ -46,7 +48,6 @@ app.post('/register', function(req, res, next) {
 app.post('/login', async function(req, res, next) {
   const { username, password } = req.body;
   if (username && password) {
-    let securedPassword = encryption(password);
     let user = await getUser({ username: username });
     console.log('User from getUser', user)
     if (!user) {

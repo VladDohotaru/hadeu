@@ -4,37 +4,44 @@ const Sequelize = require('sequelize');
 const connection = require('../config/db.js');
 const encryption = require('../config/passwordEncryption.js');
 
-const userOptions = {
-  username: {
-    type:      Sequelize.STRING,
-    unique:    true,
+const activityOptions = {
+  tip: {
+    type:      Sequelize.ENUM('STIINTIFICE', 'CULTURALE'),
+    unique:    false,
+    allowNull: false
+  },
+  format: {
+    unique:    false,
     allowNull: false,
-    validate:  {
-      len: {
-        args: [6, 25],
-        msg:  'Minimum 6, maximum 25 charachters'
-      }
+    type:      Sequelize.ENUM('CONFERINTA', 'SIMPOZION', 'LECTIE_PUBLICA', 'MASA_ROTUNDA', 'COLOCVIU')
+  },
+  dataDesfasurare: {
+    allowNull:    true,
+    type:         Sequelize.DATE
+  },
+  locatie: {
+      allowNull: false,
+      type:      Sequelize.STRING,
+      defaultValue: 'TBA'
+  },
+  nrTotalLocuri: {
+      allowNull: false,
+      type:      Sequelize.INTEGER,
+  },
+    nrLocuriDisponibile: {
+        allowNull: false,
+        type:     Sequelize.INTEGER,
+        validate:  () => {
+            if (this.nrLocuriDisponibile < 1) {
+                throw new Error('Nu locuri epuizat!');
+            }
+        }
     }
-  },
-  password: {
-    unique:    true,
-    allowNull: false,
-    type:      Sequelize.STRING,
-    validate:  {
-      len: {
-        args: [6,1024],
-      }
-    }
-  },
-  type: {
-    type:          Sequelize.ENUM('BIBLIOTECAR', 'CITITOR'),
-    unique:        false,
-    allowNull:     false,
-    defaultValue: 'CITITOR'
-  },
+  }
+
 };
 
-let User = connection.define('utilizatori', userOptions);
+let Activity = connection.define('activitate', userOptions);
 User.sync()
   .then(() => console.log('Oh yeah! User table created successfully'))
   .catch(err => console.log('BTW, did you enter wrong database credentials?'));
@@ -50,18 +57,7 @@ const createUser = async ({ username, password }) => {
 };
 
 const getAllUsers = async () => {
-  try {
-    const {
-      count,
-      rows
-    } = await User.findAndCountAll();
-    return {
-      count,
-      rows
-    }
-  } catch (error) {
-    return Promise.reject(error);
-  }
+  await User.findAll();
 };
 
 const getUser = async obj => {
