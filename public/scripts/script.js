@@ -46,16 +46,13 @@ $(document).ready(function () {
 
 $(document).ready(function() {
     $.ajax({
-        url: 'localhost/users'
-        dataType: "application/json",
+        url: '/users',
+        dataType: "json",
         cache: false,
         timeout: 1000,
         success: function(data) {
         	console.log(data);
-        	$( "div.customers" ).html(function() {
-  			var emphasis = "<tr><th class=>" +  +  .length + " paragraphs!</em>";
-  			return "<p>All new content for " + emphasis + "</p>";
-});
+        	$("#customers").html("<p>" + JSON.stringify(data.count )+ "</p>");
         },
         error: function(jqXHR, textStatus, errorThrown) {
             alert('error ' + textStatus + " " + errorThrown);
