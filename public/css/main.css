@@ -35,7 +35,7 @@ header {
 }
 
 .nav ul li a:last-child {
-	margin-left: 10em;
+	margin-left: 5em;
 	text-transform: uppercase;
 	color: #E53E35;
 }
