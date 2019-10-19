@@ -15,7 +15,7 @@ header {
 	display: grid;
 	grid-template-columns: 1fr 2fr;
 	justify-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center; 
 }
 
