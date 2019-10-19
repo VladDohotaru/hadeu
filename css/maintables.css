@@ -1,0 +1,37 @@
+body {
+	background: url("../img/bg.png");
+}
+
+#tables {
+	background-color: white;
+	width: 450px;
+	margin: 50px auto;
+	border-radius: 10px;
+	padding: 20px 35px;
+	-webkit-box-shadow: 3px 7px 36px -8px rgba(0,0,0,0.75);
+	-moz-box-shadow: 3px 7px 36px -8px rgba(0,0,0,0.75);
+	box-shadow: 3px 7px 36px -8px rgba(0,0,0,0.75);
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	margin-bottom: 25px;
+	width: 325px;
+}
+a:link, a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: green;
+  color: white;
+}
