@@ -11,3 +11,16 @@ CREATE TABLE biblioteca_db.Activity (
 	ActivityTopic ENUM ('Teatru', 'Muzica', 'Dans'),
 	ActivityLimba ENUM ('Rusa', 'Romana', 'Engleza')
 );
+
+CREATE TABLE biblioteca_db.Programe (
+	ProgrameNume varchar(255),
+	ProgrameId int,
+	ProgramePublicatiiId int
+);
+
+CREATE TABLE biblioteca_db.Publicatii (
+	PublicatiiId int,
+	PublicatiiNume varchar(255),
+	PublicatiiAutor varchar(255),
+	PublicatiiCategorie ENUM ('Stiintific', 'Cultural', 'Educativ')
+);
