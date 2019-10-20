@@ -41,7 +41,6 @@ app.get('/users', function(req, res) {
   res.render('users.html');
 });
 
-
 app.get('/api/users', function(req, res) {
   getAllUsers().then((response) => {
     res.json(response).end();
@@ -57,7 +56,8 @@ app.get('/api/activitati', function(req, res) {
     res.json(response).end();
   }); 
 });
-app.post('/activitati', function(req, res) {
+
+app.post('/api/activitati', function(req, res) {
   createActivity(req.body).then((response) => {
     res.json(response)
   }); 
@@ -74,7 +74,6 @@ app.post('/login', async function(req, res, next) {
   const { username, password } = req.body;
   if (username && password) {
     let user = await getUser({ username: username });
-    console.log('User from getUser', user)
     if (!user) {
       res.status(401).json({ message: 'No such user found' });
     }

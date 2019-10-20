@@ -23,7 +23,7 @@ $(document).ready(function () {
 
 $(document).ready(function() {
     $.ajax({
-        url: '/activitati',
+        url: '/api/activitati',
 		dataType: "json",
 		type: "GET",
         cache: false,
