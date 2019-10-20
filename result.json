@@ -1,0 +1,14 @@
+{
+    "id":2,
+    "tip":"STIINTIFICE",
+    "format":"CONFERINTA",
+    "dataDesfasurare":"2017-06-15T00:00:00.000Z",
+    "locatie":"Chisinau","nrTotalLocuri":100,
+    "nrLocuriDisponibile":99,
+    "descriere":"dede",
+    "audienta":"COPII",
+    "topic":"DANS",
+    "limba":"ROMANA",
+    "updatedAt":"2019-10-19T21:26:52.414Z",
+    "createdAt":"2019-10-19T21:26:52.414Z"
+}

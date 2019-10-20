@@ -51,8 +51,7 @@ $(document).ready(function() {
         cache: false,
         timeout: 1000,
         success: function(data) {
-        	console.log(data);
-        	$("#customers").html("<p>" + JSON.stringify(data )+ "</p>");
+        	//$("#customers").html("<p>" + JSON.stringify(data )+ "</p>");
         },
         error: function(jqXHR, textStatus, errorThrown) {
             alert('error ' + textStatus + " " + errorThrown);

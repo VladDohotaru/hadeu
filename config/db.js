@@ -3,9 +3,9 @@
 const Sequelize = require('sequelize');
 // initialize an instance of Sequelize
 const connection = new Sequelize({
-  database: 'users',
+  database: 'biblioteca_db',
   username: 'root',
-  password: 'dev',
+  password: 'Bibliotec@1',
   dialect: 'mysql',
 });
 // check the databse connection
