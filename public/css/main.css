@@ -108,8 +108,19 @@ header {
 	margin: 0 auto;
 }
 
+.add_activity{
+	margin-top: 100px;
+	height: 100px
+	width: 50px;
+	background: green;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 10px;
+}
+
     table {
-      margin-top: 100px;
+      margin-top: 30px;
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 100%;
