@@ -23,7 +23,7 @@ $(document).ready(function () {
 
 $(document).ready(function() {
 	$('.add_activity').click(function () {
-		window.location.href = 'activitate_noua'
+		window.location.href = '/activitati/activitate_noua'
 	});
     $.ajax({
         url: '/api/activitati',

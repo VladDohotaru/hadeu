@@ -3,8 +3,9 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const passportJWT = require('passport-jwt');
-const passwordCheck = require('./config/checkPassword.js');
+const passwordCheck = require('./config/checkPassword');
 const requireLogin = require('./middlewares/requireLogin');
+const isAdmin = require('./middlewares/isAdmin');
 let ExtractJwt = passportJWT.ExtractJwt;
 let jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
@@ -51,7 +52,7 @@ app.get('/activitati', function(req, res) {
   res.render('activity.html')
 });
 
-app.get('/activitati/activitate_noua', function(req, res) {
+app.get('/activitati/activitate_noua', isAdmin, function(req, res) {
   res.render('addActivity.html')
 });
 
@@ -61,7 +62,7 @@ app.get('/api/activitati', function(req, res) {
   }); 
 });
 
-app.post('/api/activitati', function(req, res) {
+app.post('/api/activitati/activitate_noua', isAdmin, function(req, res) {
   createActivity(req.body).then((response) => {
     res.json(response)
   }); 
@@ -76,6 +77,10 @@ app.post('/register', function(req, res, next) {
 
 app.get('/login', async function(req, res) {
   res.render('login.html');
+});
+
+app.get('/register', async function(req, res) {
+  res.render('register.html');
 });
 
 app.post('/api/login', async function(req, res, next) {
