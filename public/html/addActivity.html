@@ -18,29 +18,28 @@
 
 
 	<div class="div-form">
-	<form>
+		<form action="/api/activitati/activitate_noua" method="POST">
 		<ul class="form-activity">
-    	
     		<li>
     			<label><input type="text" name="tip" placeholder="Tip"></label>
     		</li>
    			<li>
-    			<input type="text" name="Format" placeholder="Format">
+    			<input type="text" name="format" placeholder="Format">
     		</li>
     		<li>
-    			<input type="date" name="Data de desfasurare" placeholder="Data de desfasurare">
+    			<input type="date" name="dataDesfasurare" placeholder="Data de desfasurare">
     		</li>
     		<li>
-    			<input type="text" name="Localul" placeholder="Localul">
+    			<input type="text" name="locatie" placeholder="Localul">
     		</li>
     		<li>
-    			<input type="number" name="Numarul total de locuri" placeholder="Numarul total de locuri">
+    			<input type="number" name="nrTotalLocuri" placeholder="Numarul total de locuri">
     		</li>    		
     		<li>
-    			<input type="number" name="Numarul de locuri disponibile" placeholder="Numarul de locuri disponibile">
+    			<input type="number" name="nrLocuriDisponibile" placeholder="Numarul de locuri disponibile">
     		</li>
     		<li>
-    			<textarea class="desc">Descriere</textarea>
+    			<input type="text" name="descriere" placeholder="descriere">
     		</li>
     		<li class="audienta-list">
     			<label class="audienta">Audienta<select name="Audienta">
@@ -51,32 +50,22 @@
     			</label>
     		</li>		
     		<li>
-    			<input type="text" name="Topic" placeholder="Topic">
+    			<input type="text" name="topic" placeholder="Topic">
     		</li>		
     		<li>
-    			<input type="text" name="Limba" placeholder="Limba">
+    			<input type="text" name="limba" placeholder="Limba">
     		</li>
+<<<<<<< HEAD
 			<!-- <input type="submit" id="huiak" name="adauga"  value="Adauga+"> -->
 			<button id="huiak" name="adauga">Adauga+</button>			
+=======
+    		<button class="newActivity">Adauga activitate +</button>			
+>>>>>>> cd6b4924c68f324680b71e77f3110c6908b28c8e
 		</ul>
 	</form>
-	<!-- <script>
-			function submitForm(form){
-				console.log('AICI')
-				var url = "/api/activitati";
-				var formData = {};
-				$(form).find("input[name]").each(function (index, node) {
-					formData[node.name] = node.value;
-				});
-				console.log(formData);
-				$.post(url, formData).done(function (data) {
-					alert(data);
-				});
-			}
-		</script> -->
+	
 	<script>
-
-		$('#huiak').click(function () {
+		$('#newActivity').click(function () {
 			console.log('CLICK')
 			// let title = $(this).text();
 		
@@ -85,27 +74,24 @@
 			// $(".hidden").css("display","block");
 			var formData = {}
 			$(this.form).find("input[name]").each(function (index, node) {
-					formData[node.name] = node.value;
-				});
-				console.log(formData)
+				formData[node.name] = node.value;
+			});
+			console.log(formData)
+			let jsonData = {}
+			try {
+				jsonData = JSON.parse(formData);
+			} catch (e) {
+				alert(e);
+				jsonData = {};
+			}
 			$.ajax({
-				url: "/api/activitati",
+				url: "/api/activitati/activitate_noua",
 				type: "POST",
-				data: formData,
+				data: jsonData,
+				contentType: 'application/json; charset=UTF-8',
+				dataType:    'json',
 				success:     function (response) {
-					console.log('RESULT', response)
-					$('#users').empty();
-					var content = '<tr><th>id</th><th>Username</th><th>Tip</th>';
-					for(var i = 0; i < response.count; i++) {
-						content += '' +
-						'<tr>' +
-						'<td>' + response.rows[i].id + '</td>' +
-						'<td>' + response.rows[i].username + '</td>' +
-						'<td>' + response.rows[i].type + '</td>';
-					}
-					
-					
-					$('#users').html(content);
+					window.location.href = '/activitati'
 				},
 				error: function (err) {
 					console.log('ERR', err);
