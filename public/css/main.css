@@ -135,3 +135,61 @@ header {
     tr:nth-child(even) {
       background-color: #dddddd;
     }
+
+/*Activity FORM */
+
+.div-form {
+	margin: 0 auto;
+	width: 30%;
+	padding: 30px;
+}
+
+.form-activity {
+	padding: 50px;
+	margin-top: 20px;
+	list-style: none;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+}
+
+.form-activity input {
+	width: 100%;
+	border-radius: 5px;
+	padding: 10px;
+	border: 1px solid green;
+	margin-bottom: 5px;
+}
+
+.form-activity input:focus {
+	border: 2px solid #E53E35;
+}
+
+textarea {
+	width: 50%;
+	height: 100px;
+	padding: 5px;
+	border: 1px solid green;
+}
+
+textarea:focus {
+	border: 2px solid #E53E35;
+}
+
+select {
+	margin: 5px 5px;
+	width: 40%;
+	border: 1px solid green;
+	padding: 10px; 
+}
+
+select:focus {
+	border: 2px solid #E53E35;
+}
+
+input[type=submit] {
+	background: green;
+	border-radius: 5px;
+	color: #fff;
+	width: 20%;
+	margin-top: 20px;
+	margin-left: 70%;
+}
