@@ -18,7 +18,7 @@
 
 
 	<div class="div-form">
-	<form action="script.js">
+	<form>
 		<ul class="form-activity">
     	
     		<li>
@@ -56,21 +56,62 @@
     		<li>
     			<input type="text" name="Limba" placeholder="Limba">
     		</li>
-    		<input type="submit" name="adauga" onclick="return submitFrom(this.form)" value="Adauga+">				
+    		<input type="submit" id="huiak" name="adauga"  value="Adauga+">				
 		</ul>
 	</form>
-	<script>
+	<!-- <script>
 			function submitForm(form){
-				var url = form.attr("action");
+				console.log('AICI')
+				var url = "/api/activitati";
 				var formData = {};
 				$(form).find("input[name]").each(function (index, node) {
 					formData[node.name] = node.value;
 				});
+				console.log(formData);
 				$.post(url, formData).done(function (data) {
 					alert(data);
 				});
 			}
-		</script>
+		</script> -->
+	<script>
+
+		$('#huiak').click(function () {
+			console.log('CLICK')
+			// let title = $(this).text();
+		
+			// $(".title").html(title);
+		
+			// $(".hidden").css("display","block");
+			var formData = {}
+			$(this.form).find("input[name]").each(function (index, node) {
+					formData[node.name] = node.value;
+				});
+				console.log(formData)
+			$.ajax({
+				url: "/api/activitati",
+				type: "POST",
+				data: formData,
+				success:     function (response) {
+					console.log('RESULT', response)
+					$('#users').empty();
+					var content = '<tr><th>id</th><th>Username</th><th>Tip</th>';
+					for(var i = 0; i < response.count; i++) {
+						content += '' +
+						'<tr>' +
+						'<td>' + response.rows[i].id + '</td>' +
+						'<td>' + response.rows[i].username + '</td>' +
+						'<td>' + response.rows[i].type + '</td>';
+					}
+					
+					
+					$('#users').html(content);
+				},
+				error: function (err) {
+					console.log('ERR', err);
+				}
+			});
+		});
+	</script> 
 </div>
 </body>
 </html>	
