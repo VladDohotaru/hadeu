@@ -4,7 +4,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const passportJWT = require('passport-jwt');
 const passwordCheck = require('./config/checkPassword.js');
-
+const requireLogin = require('./middlewares/requireLogin');
 let ExtractJwt = passportJWT.ExtractJwt;
 let jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
@@ -27,31 +27,38 @@ app.use(passport.initialize());
 app.use(bodyParser.json());
 //parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
-// add a basic route
-app.get('/', function(req, res) {
+app.use(express.static(__dirname + '/public'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+app.set('views', __dirname + '/public/html');
+
+app.get('/', requireLogin, function(req, res) {
   res.json({ message: 'Express is up!' });
 });
 
 app.get('/users', function(req, res) {
-  console.log('AICI')
+  res.render('users.html');
+});
+
+
+app.get('/api/users', function(req, res) {
   getAllUsers().then((response) => {
-    console.log(response)
-    res.json(response)
+    res.json(response).end();
   }); 
 });
 
 app.get('/activitati', function(req, res) {
-  console.log('AICI')
+  res.render('activity.html')
+});
+
+app.get('/api/activitati', function(req, res) {
   getAllActivities().then((response) => {
-    console.log(response)
-    res.json(response)
+    res.json(response).end();
   }); 
 });
 app.post('/activitati', function(req, res) {
-  console.log('AICI /activitati', req.body)
   createActivity(req.body).then((response) => {
-    console.log(response)
     res.json(response)
   }); 
 });
