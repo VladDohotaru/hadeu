@@ -33,11 +33,12 @@ $(document).ready(function() {
         timeout: 1000,
         data: { get_param: 'value' },
         success: function(data) {
-        	let content = "<tr><th>Tip</th><th>Format</th><th>Data de desfasurare</th><th>Localul</th><th>Numarul total de locuri</th><th>Numarul de locuri disponibile</th><th>Descriere</th><th>Audienta</th><th>Topic</th><th>Limba</th><th>Modificare tabel</th></tr>"
+        	let content = "<tr><th>Id</th><th>Tip</th><th>Format</th><th>Data de desfasurare</th><th>Localul</th><th>Numarul total de locuri</th><th>Numarul de locuri disponibile</th><th>Descriere</th><th>Audienta</th><th>Topic</th><th>Limba</th><th>Modificare tabel</th></tr>"
         	    $.each(data.rows, function(key, value){
-        		content +=	"" + "<tr><th>" + value.tip + 
+        		content +=	"" + "<tr><th id='activityId'>" + value.id + 
+        					"</th><th>" + value.tip + 
         				 	"</th><th>" + value.format +
-        				 	"</th><th>" + value.dataDesfasurare + 
+        				 	"</th><th>" + value.dataDesfasurare.split("T", 1) + 
         				 	"</th><th>" + value.locatie + 
         				 	"</th><th>" + value.nrTotalLocuri + 
         				 	"</th><th>" + value.nrLocuriDisponibile + 
