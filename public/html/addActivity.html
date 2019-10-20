@@ -8,12 +8,29 @@
 	<link rel="stylesheet" href="../css/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="../scripts/script.js"></script>
+
+	<script>
+			function submitForm(form){
+				alert("Pressed");
+				var url = form.attr("../scripts/script.js");
+				var formData = {};
+				$(form).find("input[name]").each(function (index, node) {
+					formData[node.name] = node.value;
+				});
+				$.post(url, formData).done(function (data) {
+					alert(data);
+				});
+			}
+		</script>
 </head>
 <body>
 
 	<header>
 		<img src="../img/logo.jpg" alt="" class="logo">
-	</header>	
+	</header>
+
+
+
 	<div class="div-form">
 	<form>
 		<ul class="form-activity">
@@ -37,10 +54,10 @@
     			<input type="number" name="Numarul de locuri disponibile" placeholder="Numarul de locuri disponibile">
     		</li>
     		<li>
-    			<textarea>Descriere</textarea>
+    			<textarea class="desc">Descriere</textarea>
     		</li>
-    		<li>
-    			<label>Audienta<select name="Audienta">
+    		<li class="audienta-list">
+    			<label class="audienta">Audienta<select name="Audienta">
     				<option>Minori</option>
     				<option>Adolescenti</option>
     				<option>Maturi</option>
@@ -53,9 +70,8 @@
     		<li>
     			<input type="text" name="Limba" placeholder="Limba">
     		</li>
-    		<input type="submit" name="adauga" value="Adauga+">				
+    		<input type="submit" name="adauga" onclick="submitFrom(this.form)" value="Adauga+">				
 		</ul>
-		
 	</form>
 </div>
 </body>

@@ -33,10 +33,6 @@ $(document).ready(function() {
         timeout: 1000,
         data: { get_param: 'value' },
         success: function(data) {
-<<<<<<< HEAD
-        	//$("#customers").html("<p>" + JSON.stringify(data )+ "</p>");
-=======
-
         	let content = "<tr><th>Tip</th><th>Format</th><th>Data de desfasurare</th><th>Localul</th><th>Numarul total de locuri</th><th>Numarul de locuri disponibile</th><th>Descriere</th><th>Audienta</th><th>Topic</th><th>Limba</th></tr>"
         	    $.each(data.rows, function(key, value){
         		content +=	"" + "<tr><th>" + value.tip + 
@@ -52,8 +48,6 @@ $(document).ready(function() {
         	    
         		$("#customers").html(content);
         	});
-        
->>>>>>> 69db874c1f9b0ba2b08605ba0bdb8e1ef596aef6
         },
         error: function(jqXHR, textStatus, errorThrown) {
             alert('error ' + textStatus + " " + errorThrown);

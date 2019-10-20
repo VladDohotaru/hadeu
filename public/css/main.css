@@ -164,7 +164,7 @@ header {
 }
 
 textarea {
-	width: 50%;
+	width: 245px;
 	height: 100px;
 	padding: 5px;
 	border: 1px solid green;
@@ -174,9 +174,17 @@ textarea:focus {
 	border: 2px solid #E53E35;
 }
 
+.audienta-list {
+	margin-top: 10px;
+}
+
+.audienta {
+	font-size: 1.2em;
+}
+
 select {
-	margin: 5px 5px;
-	width: 40%;
+	margin: 10px 0px 20px 0px;
+	width: 245px;
 	border: 1px solid green;
 	padding: 10px; 
 }
@@ -189,7 +197,7 @@ input[type=submit] {
 	background: green;
 	border-radius: 5px;
 	color: #fff;
-	width: 20%;
+	width: 100px;
 	margin-top: 20px;
 	margin-left: 70%;
 }
