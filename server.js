@@ -17,7 +17,8 @@ const {
   getUser,
   createActivity,
 	getAllActivities,
-	getActivity
+  getActivity,
+  Activity
 } = require('./models/index.js');
 
 const passport = require('./config/passport');
@@ -67,7 +68,17 @@ app.post('/api/activitati/activitate_noua', function(req, res) {
     res.json(response)
   }); 
 });
-// register route
+
+app.delete('/api/activitati/*', (req, res) => {
+  let idToDelete = req.params[0];
+  console.log('AICI')
+  Activity.destroy({
+    where: {
+      id: idToDelete
+    }
+  }).then(res => console.log(res))
+});
+
 app.post('/register', function(req, res, next) {
   const { username, password } = req.body;
   createUser({ username, password }).then(user =>

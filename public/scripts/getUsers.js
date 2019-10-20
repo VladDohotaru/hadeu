@@ -19,8 +19,6 @@ $('#getUsers').click(function () {
 				'<td>' + response.rows[i].username + '</td>' +
 				'<td>' + response.rows[i].type + '</td>';
 			}
-			
-			
 			$('#users').html(content);
 		},
 		error: function (err) {
