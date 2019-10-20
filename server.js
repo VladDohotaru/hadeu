@@ -52,7 +52,7 @@ app.get('/activitati', function(req, res) {
   res.render('activity.html')
 });
 
-app.get('/activitati/activitate_noua', isAdmin, function(req, res) {
+app.get('/activitati/activitate_noua', function(req, res) {
   res.render('addActivity.html')
 });
 
@@ -62,7 +62,7 @@ app.get('/api/activitati', function(req, res) {
   }); 
 });
 
-app.post('/api/activitati/activitate_noua', isAdmin, function(req, res) {
+app.post('/api/activitati/activitate_noua', function(req, res) {
   createActivity(req.body).then((response) => {
     res.json(response)
   }); 
