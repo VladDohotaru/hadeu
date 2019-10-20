@@ -7,21 +7,7 @@
 	<link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
 	<link rel="stylesheet" href="../css/main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="../scripts/script.js"></script>
-
-	<script>
-			function submitForm(form){
-				alert("Pressed");
-				var url = form.attr("../scripts/script.js");
-				var formData = {};
-				$(form).find("input[name]").each(function (index, node) {
-					formData[node.name] = node.value;
-				});
-				$.post(url, formData).done(function (data) {
-					alert(data);
-				});
-			}
-		</script>
+	<!-- <script src="../scripts/script.js"></script> -->
 </head>
 <body>
 
@@ -32,7 +18,7 @@
 
 
 	<div class="div-form">
-	<form>
+	<form action="script.js">
 		<ul class="form-activity">
     	
     		<li>
@@ -70,9 +56,21 @@
     		<li>
     			<input type="text" name="Limba" placeholder="Limba">
     		</li>
-    		<input type="submit" name="adauga" onclick="submitFrom(this.form)" value="Adauga+">				
+    		<input type="submit" name="adauga" onclick="return submitFrom(this.form)" value="Adauga+">				
 		</ul>
 	</form>
+	<script>
+			function submitForm(form){
+				var url = form.attr("action");
+				var formData = {};
+				$(form).find("input[name]").each(function (index, node) {
+					formData[node.name] = node.value;
+				});
+				$.post(url, formData).done(function (data) {
+					alert(data);
+				});
+			}
+		</script>
 </div>
 </body>
 </html>	
