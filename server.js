@@ -76,7 +76,7 @@ app.delete('/api/activitati/*', (req, res) => {
     where: {
       id: idToDelete
     }
-  }).then(res => console.log(res))
+  }).then(response => res.json(response))
 });
 
 app.post('/register', function(req, res, next) {
