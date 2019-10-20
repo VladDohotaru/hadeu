@@ -7,7 +7,7 @@ const {
 } = require('./user.js');
 'use strict';
 const {
-  Activity,
+	Activity,
 	createActivity,
 	getAllActivities,
 	getActivity,

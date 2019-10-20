@@ -25,6 +25,7 @@ $(document).ready(function() {
 	$('.add_activity').click(function () {
 		window.location.href = '/activitati/activitate_noua'
 	});
+	
     $.ajax({
         url: '/api/activitati',
 		dataType: "json",
@@ -45,7 +46,7 @@ $(document).ready(function() {
         				 	"</th><th>" + value.descriere + 
         				 	"</th><th>" + value.audienta + 
         				 	"</th><th>" + value.topic + 
-        				 	"</th><th>" + value.limba + "</th><th><button class='modify'>Editeaza</button><button class='modify'>Sterge</button></th></tr>";
+        				 	"</th><th>" + value.limba + "</th><th><button class='modify'>Editeaza</button><button id='delete' class='modify'>Sterge</button></th></tr>";
         	    
         		$("#customers").html(content);
         	});

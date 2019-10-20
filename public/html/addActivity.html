@@ -15,17 +15,26 @@
 		<img src="../img/logo.jpg" alt="" class="logo">
 	</header>
 
-
-
 	<div class="div-form">
 		<form action="/api/activitati/activitate_noua" method="POST">
 		<ul class="form-activity">
-    		<li>
-    			<label><input type="text" name="tip" placeholder="Tip"></label>
-    		</li>
-   			<li>
-    			<input type="text" name="format" placeholder="Format">
-    		</li>
+    		<li class="audienta-list">
+    			<label class="tip">Tip<select name="tip">
+    				<option>STIINTIFICE</option>
+    				<option>CULTURALE</option>
+    			</select>
+    			</label>
+    		</li>		
+			<li class="audienta-list">
+    			<label class="format">Format<select name="format">
+    				<option>CONFERINTA</option>
+					<option>SIMPOZION</option>
+					<option>LECTIE_PUBLICA</option>
+					<option>MASA_ROTUNDA</option>
+					<option>COLOCVIU</option>
+    			</select>
+    			</label>
+    		</li>	
     		<li>
     			<input type="date" name="dataDesfasurare" placeholder="Data de desfasurare">
     		</li>
@@ -42,19 +51,31 @@
     			<input type="text" name="descriere" placeholder="descriere">
     		</li>
     		<li class="audienta-list">
-    			<label class="audienta">Audienta<select name="Audienta">
-    				<option>Minori</option>
-    				<option>Adolescenti</option>
-    				<option>Maturi</option>
+    			<label class="audienta">Audienta<select name="audienta">
+    				<option>COPII</option>
+    				<option>TINERI</option>
+					<option>ADOLESCENTI</option>
+					<option>ADULTI</option>
+					<option>SENIORI</option>
     			</select>
     			</label>
     		</li>		
-    		<li>
-    			<input type="text" name="topic" placeholder="Topic">
-    		</li>		
-    		<li>
-    			<input type="text" name="limba" placeholder="Limba">
-    		</li>
+    		<li class="audienta-list">
+    			<label class="topic">Topic<select name="topic">
+    				<option>TEATRU</option>
+					<option>MUZICA</option>
+					<option>DANS</option>
+    			</select>
+    			</label>
+    		</li>	
+    		<li class="audienta-list">
+    			<label class="limba">Limba<select name="limba">
+    				<option>ROMANA</option>
+					<option>RUSA</option>
+					<option>ENGLEZA</option>
+    			</select>
+    			</label>
+    		</li>	
     		<button class="newActivity">Adauga activitate +</button>			
 		</ul>
 	</form>
@@ -71,10 +92,14 @@
 			$(this.form).find("input[name]").each(function (index, node) {
 				formData[node.name] = node.value;
 			});
+			$(this.form).find("select[name]").each(function (index, node) {
+				formData[node.name] = node.options[node.selectedIndex].text;
+			});
+
 			console.log(formData)
 			let jsonData = {}
 			try {
-				jsonData = JSON.parse(formData);
+				jsonData = JSON.parse(formData); 
 			} catch (e) {
 				alert(e);
 				jsonData = {};
@@ -86,7 +111,7 @@
 				contentType: 'application/json; charset=UTF-8',
 				dataType:    'json',
 				success:     function (response) {
-					window.location.href = '/activitati'
+					window.location.href = data.redirect;
 				},
 				error: function (err) {
 					console.log('ERR', err);
