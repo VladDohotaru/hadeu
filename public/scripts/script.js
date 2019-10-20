@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	console.log('INTRA')
 	
 	$(".nav-link__item").click(function(){
 
@@ -7,30 +8,6 @@ $(document).ready(function () {
 		$(".title").html(title);
 
 		$(".hidden").css("display","block");
-		$.ajax({
-			url: "/users",
-			type: "GET",
-			dataType: "application/json",
-			success:     (result) => {
-				console.log(result)
-				$('#output').empty();
-				var content = '<table><tr><th>Nr</tb><th>Username</th><th>Group</th>';
-				$.each(result, (index, value) => {
-					console.log(value)
-				  content += '' +
-				  '<tr>' +
-				  '<td>' + value.id + '</td>' +
-				  '<td>' + value.username + '</td>' +
-				  '<td>' + value.group + '</td>' +
-				  '<td><button class="make-admin" data-user="' + value.username + '">Set admin</button></td>';
-				});
-				content += '</table>';
-				$('#output').html(content);
-			  },
-			  error: (err) => {
-				console.log(err);
-			  }
-		});
 	});
 
 	$(".hidden").click(function(){
@@ -46,12 +23,14 @@ $(document).ready(function () {
 
 $(document).ready(function() {
     $.ajax({
-        url: '/activitati',
-        dataType: "json",
+        url: '/api/activitati',
+		dataType: "json",
+		type: "GET",
         cache: false,
         timeout: 1000,
         data: { get_param: 'value' },
         success: function(data) {
+<<<<<<< HEAD
 
         	let content = "<tr><th>Tip</th><th>Format</th><th>Data de desfasurare</th><th>Localul</th><th>Numarul total de locuri</th><th>Numarul de locuri disponibile</th><th>Descriere</th><th>Audienta</th><th>Topic</th><th>Limba</th></tr>"
         	    $.each(data.rows, function(key, value){
@@ -69,6 +48,11 @@ $(document).ready(function() {
         		$("#customers").html(content);
         	});
           },
+=======
+        	console.log('AJUNGE?', data);
+        	$("#customers").html("<p>" + JSON.stringify(data )+ "</p>");
+        },
+>>>>>>> 53f4983b055d5961442bd7d3f4b4d01fe6b8a7ac
         error: function(jqXHR, textStatus, errorThrown) {
             alert('error ' + textStatus + " " + errorThrown);
         }
