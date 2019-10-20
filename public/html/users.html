@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hasdeu</title>
+	<link rel="shortcut icon" href="../img/logo.jpg" type="image/x-icon">
+	<link rel="stylesheet" href="../css/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<body>
+  <header>
+    <div class="container">
+      <div class="page-header text-center">
+        <img src="../img/logo.jpg" alt="" class="logo">
+      </div>
+    </div>
+  </header>
+  <div class="main">
+    <div class="container">
+      <div class="row">
+        <button type="button" class="btn" id="getUsers">GET Users</button>
+        <script type="text/javascript" src="/scripts/getUsers.js"></script>
+
+        <table id="users"></table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

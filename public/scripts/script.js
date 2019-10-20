@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	console.log('INTRA')
 	
 	$(".nav-link__item").click(function(){
 
@@ -7,30 +8,6 @@ $(document).ready(function () {
 		$(".title").html(title);
 
 		$(".hidden").css("display","block");
-		$.ajax({
-			url: "/users",
-			type: "GET",
-			dataType: "application/json",
-			success:     (result) => {
-				console.log(result)
-				$('#output').empty();
-				var content = '<table><tr><th>Nr</tb><th>Username</th><th>Group</th>';
-				$.each(result, (index, value) => {
-					console.log(value)
-				  content += '' +
-				  '<tr>' +
-				  '<td>' + value.id + '</td>' +
-				  '<td>' + value.username + '</td>' +
-				  '<td>' + value.group + '</td>' +
-				  '<td><button class="make-admin" data-user="' + value.username + '">Set admin</button></td>';
-				});
-				content += '</table>';
-				$('#output').html(content);
-			  },
-			  error: (err) => {
-				console.log(err);
-			  }
-		});
 	});
 
 	$(".hidden").click(function(){
@@ -45,16 +22,44 @@ $(document).ready(function () {
 });
 
 $(document).ready(function() {
+	$('.add_activity').click(function () {
+		window.location.href = 'activitate_noua'
+	});
     $.ajax({
-        url: '/activitati',
-        dataType: "json",
+        url: '/api/activitati',
+		dataType: "json",
+		type: "GET",
         cache: false,
         timeout: 1000,
+        data: { get_param: 'value' },
         success: function(data) {
+<<<<<<< HEAD
         	//$("#customers").html("<p>" + JSON.stringify(data )+ "</p>");
+=======
+
+        	let content = "<tr><th>Tip</th><th>Format</th><th>Data de desfasurare</th><th>Localul</th><th>Numarul total de locuri</th><th>Numarul de locuri disponibile</th><th>Descriere</th><th>Audienta</th><th>Topic</th><th>Limba</th></tr>"
+        	    $.each(data.rows, function(key, value){
+        		content +=	"" + "<tr><th>" + value.tip + 
+        				 	"</th><th>" + value.format +
+        				 	"</th><th>" + value.dataDesfasurare + 
+        				 	"</th><th>" + value.locatie + 
+        				 	"</th><th>" + value.nrTotalLocuri + 
+        				 	"</th><th>" + value.nrLocuriDisponibile + 
+        				 	"</th><th>" + value.descriere + 
+        				 	"</th><th>" + value.audienta + 
+        				 	"</th><th>" + value.topic + 
+        				 	"</th><th>" + value.limba + "</th></tr>";
+        	    
+        		$("#customers").html(content);
+        	});
+        
+>>>>>>> 69db874c1f9b0ba2b08605ba0bdb8e1ef596aef6
         },
         error: function(jqXHR, textStatus, errorThrown) {
             alert('error ' + textStatus + " " + errorThrown);
         }
     });
+
 });
+
+
