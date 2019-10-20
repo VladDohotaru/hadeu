@@ -41,7 +41,7 @@ app.get('/users', function(req, res) {
   res.render('users.html');
 });
 
-app.get('/api/users', function(req, res) {
+app.get('/api/users', requireLogin, function(req, res) {
   getAllUsers().then((response) => {
     res.json(response).end();
   }); 
@@ -70,7 +70,11 @@ app.post('/register', function(req, res, next) {
   );
 });
 
-app.post('/login', async function(req, res, next) {
+app.get('/login', async function(req, res) {
+  res.render('login.html');
+});
+
+app.post('/api/login', async function(req, res, next) {
   const { username, password } = req.body;
   if (username && password) {
     let user = await getUser({ username: username });
