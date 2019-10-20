@@ -54,9 +54,11 @@
     		</li>
     		<li class="audienta-list">
     			<label class="audienta">Audienta<select name="audienta">
-    				<option>Minori</option>
-    				<option>Adolescenti</option>
-    				<option>Maturi</option>
+    				<option>COPII</option>
+    				<option>TINERI</option>
+					<option>ADOLESCENTI</option>
+					<option>ADULTI</option>
+					<option>SENIORI</option>
     			</select>
     			</label>
     		</li>		
@@ -95,6 +97,7 @@
 			$(this.form).find("select[name]").each(function (index, node) {
 				formData[node.name] = node.options[node.selectedIndex].text;
 			});
+
 			console.log(formData)
 			let jsonData = {}
 			try {
@@ -110,7 +113,7 @@
 				contentType: 'application/json; charset=UTF-8',
 				dataType:    'json',
 				success:     function (response) {
-					window.location.href = '/activitati'
+					window.location.href = data.redirect;
 				},
 				error: function (err) {
 					console.log('ERR', err);
