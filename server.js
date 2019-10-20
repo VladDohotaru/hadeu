@@ -51,6 +51,10 @@ app.get('/activitati', function(req, res) {
   res.render('activity.html')
 });
 
+app.get('/activitati/activitate_noua', function(req, res) {
+  res.render('addActivity.html')
+});
+
 app.get('/api/activitati', function(req, res) {
   getAllActivities().then((response) => {
     res.json(response).end();
