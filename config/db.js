@@ -5,8 +5,8 @@ const Sequelize = require('sequelize');
 const connection = new Sequelize({
   database: 'users',
   username: 'root',
-  password: 'P@ssW06wd',
-  dialect: 'mysql',
+  password: 'dev',
+  dialect:  'mysql',
 });
 // check the databse connection
 connection
