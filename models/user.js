@@ -39,11 +39,11 @@ User.sync()
   .then(() => console.log('Oh yeah! User table created successfully'))
   .catch(err => console.log('BTW, did you enter wrong database credentials?'));
 
-const createUser = async ({ username, password }) => {
+const createUser = async ({ username, password, type }) => {
   try {
-    console.log('Create user', username, password)
+    console.log('Create user', username, password, type)
     let securedPassword = encryption(password);
-    await User.create({ username, password: securedPassword });
+    await User.create({ username, password: securedPassword, type });
   } catch (createUserError) {
     return Promise.reject(createUserError);
   }

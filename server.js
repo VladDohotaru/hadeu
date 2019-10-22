@@ -35,7 +35,7 @@ app.set('view engine', 'html');
 
 app.set('views', __dirname + '/public/html');
 
-app.get('/', requireLogin, function(req, res) {
+app.get('/', function(req, res) {
   res.json({ message: 'Express is up!' });
 });
 
@@ -43,7 +43,7 @@ app.get('/users', function(req, res) {
   res.render('users.html');
 });
 
-app.get('/api/users', requireLogin, function(req, res) {
+app.get('/api/users', function(req, res) {
   getAllUsers().then((response) => {
     res.json(response).end();
   }); 
@@ -80,8 +80,8 @@ app.delete('/api/activitati/*', (req, res) => {
 });
 
 app.post('/register', function(req, res, next) {
-  const { username, password } = req.body;
-  createUser({ username, password }).then(user =>
+  const { username, password, type } = req.body;
+  createUser({ username, password, type }).then(user =>
     res.json({ user, msg: 'account created successfully' })
   );
 });
