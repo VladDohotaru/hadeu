@@ -18,13 +18,17 @@
 
 	<div class="div-table">
 		<button class="add_activity">Adauga activitate +</button>
-		<button class="sort_by">Sorteaza</button>
-		<label>Crescator<input type="radio" name="cresc"></label>
-		<label>Descrescator<input type="radio" name="decresc"></label>
-		<select>
-			<option>Audienta</option>
-			<option>Numarul de locuri</option>
-		</select>	
+		<form method="post" id="ajax_form" action="">
+			<button class="sort_by">Sorteaza</button>
+			<input type="radio" id="cresc-option" name="selector">
+    		<label for="cresc-option">Crescator</label>
+    		<input type="radio" id="desc-option" name="selector">
+    		<label for="desc-option">Descrecator</label>
+			<select id="selection">
+				<option>Audienta</option>
+				<option>Numarul de locuri</option>
+			</select>
+		</form>	
 		<table id="customers">
 
 		</table>

@@ -55,7 +55,18 @@ $(document).ready(function() {
             alert('error ' + textStatus + " " + errorThrown);
         }
     });
+});
+
+$(document).ready(function(){
+
+	$(".sort_by").click(function(){
+		let sorting = $("input[type=radio]").prop('checked');
+		if (sorting){
+			console.log($("#selection option").val());
+		}
+	});
 
 });
+
 
 
