@@ -1,11 +1,16 @@
 'use strict';
 
+const jwt = require("jsonwebtoken");
+  
 const  requireLogin = (req, res, next) => {
-    console.log('REQUIRE LOGIN', req)
-  if (!req.user) {
-    res.redirect('/login');
-  } else {
+  const token = req.cookies["Authorization"];
+  if (!token) return res.status(401).send("Access denied. No token provided.");
+  try {
+    const decoded = jwt.verify(token, 'wowwow');
+    req.user = decoded;
     next();
+  } catch (ex) {
+    res.status(400).send("Invalid token.");
   }
 };
 
