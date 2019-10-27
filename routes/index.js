@@ -58,4 +58,45 @@ module.exports = (router, passport) => {
 			}
 		}
 	});
+
+
+	router.get('/users', function(req, res) {
+		res.render('users.html');
+	});
+	  
+	router.get('/api/users', function(req, res) {
+		getAllUsers().then((response) => {
+			res.json(response).end();
+		}); 
+	});
+	
+	router.get('/activitati', function(req, res) {
+		res.render('activity.html')
+	});
+	
+	router.get('/activitati/activitate_noua', function(req, res) {
+		res.render('addActivity.html')
+	});
+	
+	router.get('/api/activitati', function(req, res) {
+		getAllActivities().then((response) => {
+			res.json(response).end();
+		}); 
+	});
+	
+	router.post('/api/activitati/activitate_noua', function(req, res) {
+		createActivity(req.body).then((response) => {
+			res.json(response)
+		}); 
+	});
+	
+	router.delete('/api/activitati/*', (req, res) => {
+		let idToDelete = req.params[0];
+		console.log('AICI')
+		Activity.destroy({
+			where: {
+			id: idToDelete
+			}
+		}).then(response => res.json(response))
+	});
 }
